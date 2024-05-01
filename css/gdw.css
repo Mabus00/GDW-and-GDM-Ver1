@@ -1,0 +1,230 @@
+/**
+ * gdw-specific style sheet
+ */
+
+
+#map {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0px;
+	left: 0;
+	margin-left: 300px;
+	margin-bottom: 120px;
+}
+#map .ol-zoom .ol-zoom-out {
+  margin-top: 204px;
+}
+#map .ol-zoomslider {
+  top: 2.3em;
+}
+#map .ol-touch .ol-zoom .ol-zoom-out { 
+  margin-top: 212px;
+}
+#map .ol-touch .ol-zoomslider {
+  top: 2.75em;
+}
+#map .ol-zoom-in.ol-has-tooltip:hover [role=tooltip],
+#map .ol-zoom-in.ol-has-tooltip:focus [role=tooltip] {
+  top: 3px;
+}
+#map .ol-zoom-out.ol-has-tooltip:hover [role=tooltip],
+#map .ol-zoom-out.ol-has-tooltip:focus [role=tooltip] {
+  top: 232px;
+}
+
+#sidebar {
+   position: absolute;
+   width:300px;
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+
+/** Location and Depth/Alt text boxes **/
+#toolbar {
+	position: absolute;
+	left:10px;
+	top: 10px;
+}
+
+#layers {
+	position: absolute;
+	width: 300px;
+	top: 190px;
+	bottom: 0;
+	color: black;
+}
+
+/** grey-out those selections that are not yet active **/
+#defined-layer-tree, #GIOPS, #milMet-layer-tree, #milIce-layer-tree, #vectorraster-layer-tree{
+	color: #a6a6a6;
+}
+h4 {
+	position: absolute;
+	font-size: 16px;
+	font-family: Verdana;
+	font-weight: bold;
+	position: absolute;
+	left: 0px;
+	top: -5px;
+}
+
+#latitude-longitude {
+	text-align: left;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 16px;
+	position: absolute;
+	width: 300px;
+	left: 0px;
+	top: 130px;
+	bottom: 0;
+}
+
+/** code for mouseover temperature popup **/
+#mouse-popup {
+	display: none;
+	font-size: 10px;
+	font-family: Verdana;
+	color: black;
+    background-color: #F1EEE8;
+	padding: 2px 2px 2px 4px;
+	position: absolute;
+	box-sizing: border-box;
+	border-radius: 8px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+/** label above app.squareextent **/
+#date-overlay {
+	font-size: 10px;
+	font-family: Verdana;
+	color: black;
+    background-color: #F1EEE8;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.group {
+	zoom: 1;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 0px;
+}
+
+#dateslider {
+	position: fixed;
+	height: 80px;
+	bottom: 35px;
+	left: 300px;
+	right: 0px;
+}
+
+#verticalGraph {
+	height: 400px;
+	width: 400px;	
+}
+
+.gdw-graph {
+   top: 0.5em;
+   left: 3em;
+}
+
+.gdw-rectangle {
+   top: 0.5em;
+   left: 5.5em;
+}
+
+.gdw-animation-backward {
+   top: 0.5em;
+   left: 8em;
+}
+
+
+.gdw-animation {
+   top: 0.5em;
+   left: 10.5em;
+}
+
+.gdw-animation-forward {
+   top: 0.5em;
+   left: 13em;
+}
+
+.gdw-download {
+   top: 0.5em;
+   left: 15.5em;
+}
+
+#animation-button, #animation-backward-button, #download-button {
+	padding: 0px 2px 0px 0px;
+}
+
+#animation-forward-button {
+	padding: 0px 0px 0px 2px;
+}
+
+#rectangle-button {
+	padding: 0px 0px 1px 1px;
+}
+
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+#ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: -2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "X";
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+}
+
+.ui-autocomplete-category {
+	font-weight: bold;
+	padding: .2em .4em;
+	margin: .8em 0 .2em;
+	line-height: 1.5;
+}	
+.ui-menu .ui-menu-item {
+    padding: 0em 1.5em;
+	width: 220px;
+	clear: both;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	width: 260px;
+	margin-bottom: 10px;
+}
+
+.tooltip-inner {
+  white-space: nowrap;
+}
