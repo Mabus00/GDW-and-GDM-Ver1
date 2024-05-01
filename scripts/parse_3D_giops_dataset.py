@@ -15,7 +15,8 @@ for file_name in file_names:
     
     # Construct the full path to the NetCDF file
     file_path = os.path.join(folder_path, file_name)
-    
+    file_path = file_path.replace('\\', '/')
+
     # Open the NetCDF file
     nc_file = Dataset(file_path, "r")
 
