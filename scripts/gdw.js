@@ -1256,27 +1256,17 @@ $.ajax('http://localhost:8080/geoserver/wms?request=GetCapabilities',
                 // GT_yyyymmddhh_HHH_2D_varname
                 // GT_yyyymmddhh_HHH_3D_zzzz_varname
                 
-                // app.layers.push( {
-                //     name : capability.Layer.Layer[i].Name,
-                //     date : new Date(splitparse[1].substr(0,4), splitparse[1].substr(4,2)-1, splitparse[1].substr(6,2)),
-                //     hour : splitparse[2],
-                //     source : splitparse[3],
-                //     depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4],
-                //     datatype : ( splitparse.length <= 5 ) ? splitparse[4] : splitparse[5],
-                //     legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
-                // });
-                // creates a new Date() in this format: Sat Sep 15 2023 00:00:00 GMT+0000 (Coordinated Universal Time)
-
-                //e.g., CMC_giops_votemper_depth_all_latlon0.2x0.2_24h-mean_2024042800_P024
                 app.layers.push( {
-                    name : splitparse[2] + "/" + splitparse[3],
-                    date : new Date(splitparse[7].substr(0,4), splitparse[7].substr(4,2)-1, splitparse[7].substr(6,2)),
-                    hour : splitparse[7].substr(8,),
-                    source : splitparse[1],
+                    name : capability.Layer.Layer[i].Name,
+                    date : new Date(splitparse[1].substr(0,4), splitparse[1].substr(4,2)-1, splitparse[1].substr(6,2)),
+                    hour : splitparse[2],
+                    source : splitparse[3],
                     depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4],
                     datatype : ( splitparse.length <= 5 ) ? splitparse[4] : splitparse[5],
                     legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
                 });
+                // creates a new Date() in this format: Sat Sep 15 2023 00:00:00 GMT+0000 (Coordinated Universal Time)
+
             }// end of capability response data parsing
            
             // get dates to update timeslider

@@ -19,7 +19,7 @@ for file_name in file_names:
     
     # Construct the full path to the NetCDF file
     file_path = os.path.join(folder_path, file_name)
-    #file_path = file_path.replace('\\', '/')
+    file_path = file_path.replace('\\', '/')
 
     # Open the NetCDF file
     ds = xr.open_dataset(file_path)
@@ -45,14 +45,40 @@ for file_name in file_names:
 
     '''
 
-    print(ds.votemper)
-
     # Create a new folder based on the original file name
-    # output_folder_name = file_name.split(".")[0]  # Remove the file extension
-    # output_folder_path = os.path.join(folder_path, output_folder_name)
-    # os.makedirs(output_folder_path, exist_ok=True)  # Create the folder if it doesn't exist
+    output_folder_name = file_name.split(".")[0]  # Remove the file extension
+    output_folder_path = os.path.join(folder_path, output_folder_name)
+    os.makedirs(output_folder_path, exist_ok=True)  # Create the folder if it doesn't exist
+    
+    # e.g., CMC_giops_votemper_depth_all_latlon0.2x0.2_24h-mean_2024042800_P024
+    # giops_yyyymmddhh_HHH_3D_depth_votemper
+    # Extract the date and time information from the filename
+    date_str = file_name.split('_')[-2]
+    time_str = file_name.split('_')[-1][1:-3]  # Extract the desired part
 
-    # output_file_path = os.path.join(output_folder_path, f"{file_name}_{rounded_depth}_votemper.nc")
+    # Get the depth dimension
+    depth_dim = [dim for dim in ds.dims if 'depth' in dim][0]
+
+    # Loop through each depth layer and save as a separate file
+    for depth in ds[depth_dim].values:
+        # Extract the data for the current depth layer
+        layer_data = ds.sel({depth_dim: depth})
+
+        # Format the depth value as a four-digit number with leading zeros
+        depth_formatted = f"{depth:.2f}".replace('.', '').zfill(4)
+
+        # Construct the output file name with the desired format
+        output_filename = f"giops_{date_str}_{time_str}_{depth_formatted}_3D_votemper.nc"
+        output_path = os.path.join(output_folder_path, output_filename)
+        output_path = output_path.replace('\\', '/')
+        
+        # Save the depth layer as a separate netCDF file
+        layer_data.to_netcdf(output_path)
+        print(f'Saved depth layer {depth:.2f} to {output_path}')
+
+        # e.g., CMC_giops_votemper_depth_all_latlon0.2x0.2_24h-mean_2024042800_P024
+        # ``save depth levels as GT_yyyymmddhh_HHH_3D_zzzz_varname
+
     
     print(f"File saved:")
 
