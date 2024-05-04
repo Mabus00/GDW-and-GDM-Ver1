@@ -17,10 +17,16 @@ nd = "3d"
 HH = "12"
 hhh_values = ["024", "048", "072", "096", "120", "144", "168", "192", "216", "240"]
 
-# Create a folder to save the downloaded files
-output_folder = "C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/geoserver/data/giops_3D_data"
-os.makedirs(output_folder, exist_ok=True)
+# Get the current working directory
+cwd = os.getcwd()
 
+# Construct the path to the desired folder
+output_folder = os.path.join(cwd, 'giops_3D_data')
+
+# Create the folder if it doesn't exist
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder, exist_ok=True)
+                
 # Delete all files in the output folder if they exist
 file_paths = glob.glob(os.path.join(output_folder, "*"))
 for file_path in file_paths:
@@ -43,7 +49,7 @@ for hhh in hhh_values:
         # Iterate over each line
         for line in lines:
             # Check if the line contains "votemper" and "20240501"
-            if "votemper" in line and "20240501" in line:
+            if "votemper" in line and "2024050412" in line:
                # Use regular expression to extract the filename
                 match = re.search(r'href="([^"]+\.nc)"', line)
                 if match:
