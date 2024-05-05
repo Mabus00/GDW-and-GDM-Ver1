@@ -236,7 +236,7 @@ app.buttongraph = function(opt_options) {
 	            	depthLayers[i] = matchingLayers[i].name;
 	            }
 	            
-			var url1 = "http://184.66.20.200/geoserver/wms" 
+			var url1 = "http://localhost:8080/geoserver/wms" 
 		          + "?REQUEST=GetFeatureInfo"
 		          + "&BBOX=" + app.map.getView().calculateExtent(app.map.getSize())
 		          + "&VERSION=1.1.0"
@@ -325,7 +325,7 @@ function createVerticalGraph(evt, graphValues) {
     
     len=validTempValues.length;
     
-    var depths = [0,2,3,4,5,6,8,10,11,13,16,18,22,25,29,34,40,47,56,66,78,92,110,131,156,186,222,266,318,380,454,541,644,763,902,1062,1245,1452,1684,1942,2225,2533,2866,3221,3597,3992,4405,4833,5275,5728];// using this for categories as its easier - for now
+    var depths = [0.49, 1.54, 2.65, 3.82, 5.08, 6.44, 7.93, 9.57, 11.41, 13.47, 15.81, 18.50, 21.60, 25.21, 29.44, 34.43, 40.34, 47.37, 55.76, 65.81, 77.85, 92.33, 109.73, 130.67, 155.85, 186.13, 222.48, 266.04, 318.13, 380.21, 453.94, 541.09, 643.57, 763.33, 902.34, 1062.44, 1245.29, 1452.25, 1684.28, 1941.89, 2225.08, 2533.34, 2865.70, 3220.82, 3597.03, 3992.48, 4405.22, 4833.29, 5274.78, 5727.92];// using this for categories as its easier - for now
     var validDepths = depths.slice(0,len);//only display depths for which there are valid temps
     
     var coordinate = evt.coordinate;
@@ -645,7 +645,7 @@ function handleMouseMove(evt) {
             var depthLayer = matchingLayer.name;         
             var depthLocation = app.map.getEventPixel(evt.originalEvent);
             
-		    var url1 = "http://184.66.20.200/geoserver/wms" 
+		    var url1 = "http://localhost:8080/geoserver/wms" 
 	          + "?REQUEST=GetFeatureInfo"
 	          + "&BBOX=" + app.map.getView().calculateExtent(app.map.getSize())
 	          + "&VERSION=1.1.0"
@@ -1261,7 +1261,7 @@ $.ajax('http://localhost:8080/geoserver/wms?request=GetCapabilities',
                     date : new Date(splitparse[1].substr(0,4), splitparse[1].substr(4,2)-1, splitparse[1].substr(6,2)),
                     hour : splitparse[2],
                     source : splitparse[3],
-                    depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4],
+                    depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4]/100,
                     datatype : ( splitparse.length <= 5 ) ? splitparse[4] : splitparse[5],
                     legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
                 });
@@ -1413,7 +1413,7 @@ function updateLayerContent(dateSliderStartDate, dateSliderEndDate) {
         var newlayer = new ol.layer.Tile({
             extent: app.squareextent,
             source: new ol.source.TileWMS({
-                url: 'http://184.66.20.200/geoserver/wms',
+                url: 'http://localhost:8080/geoserver/wms',
                 params: {'LAYERS': addLayers[i].name, 'TILED': false},//getting each layer in order
                 serverType: 'geoserver'
             })

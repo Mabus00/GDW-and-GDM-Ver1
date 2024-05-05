@@ -68,7 +68,7 @@ for file_name in file_names:
         depth_formatted = f"{depth:.2f}".replace('.', '').zfill(4)
 
         # Construct the output file name with the desired format
-        output_filename = f"giops_{date_str}_{time_str}_{depth_formatted}_3D_votemper.nc"
+        output_filename = f"giops_{date_str}_{time_str}_3D_{depth_formatted}_votemper.nc"
         output_path = os.path.join(output_folder_path, output_filename)
         output_path = output_path.replace('\\', '/')
         
