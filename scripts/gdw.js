@@ -1257,13 +1257,13 @@ $.ajax('http://localhost:8080/geoserver/wms?request=GetCapabilities',
                 // GT_yyyymmddhh_HHH_3D_zzzz_varname
                 
                 app.layers.push( {
-                    name : capability.Layer.Layer[i].Name,
+                    name : capability.Layer.Layer[i].Name.replace(/^giops:/, ''),
                     date : new Date(splitparse[1].substr(0,4), splitparse[1].substr(4,2)-1, splitparse[1].substr(6,2)),
                     hour : splitparse[2],
                     source : splitparse[3],
                     depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4]/100,
                     datatype : ( splitparse.length <= 5 ) ? splitparse[4] : splitparse[5],
-                    legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
+                    //legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
                 });
                 // creates a new Date() in this format: Sat Sep 15 2023 00:00:00 GMT+0000 (Coordinated Universal Time)
 

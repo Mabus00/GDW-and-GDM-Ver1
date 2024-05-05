@@ -1,6 +1,7 @@
 from netCDF4 import Dataset
 import xarray as xr
 import os
+import matplotlib.pyplot as plt
 
 # Get the current working directory
 cwd = os.getcwd()
@@ -75,6 +76,12 @@ for file_name in file_names:
         # Save the depth layer as a separate netCDF file
         layer_data.to_netcdf(output_path)
         print(f'Saved depth layer {depth:.2f} to {output_path}')
+
+        # Plot the depth layer
+        # fig, ax = plt.subplots(figsize=(10, 6))
+        # layer_data.votemper.plot(ax=ax)
+        # ax.set_title(f'Depth Layer: {depth:.2f}')
+        # plt.show()
 
         # e.g., CMC_giops_votemper_depth_all_latlon0.2x0.2_24h-mean_2024042800_P024
         # ``save depth levels as GT_yyyymmddhh_HHH_3D_zzzz_varname
