@@ -1263,7 +1263,7 @@ $.ajax('http://localhost:8080/geoserver/wms?request=GetCapabilities',
                     source : splitparse[3],
                     depth : ( splitparse.length <= 5 ) ? 0 : splitparse[4]/100,
                     datatype : ( splitparse.length <= 5 ) ? splitparse[4] : splitparse[5],
-                    //legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
+                    legend : capability.Layer.Layer[i].Style[0].LegendURL[0].OnlineResource,
                 });
                 // creates a new Date() in this format: Sat Sep 15 2023 00:00:00 GMT+0000 (Coordinated Universal Time)
 
